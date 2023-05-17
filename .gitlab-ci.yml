@@ -1,0 +1,15 @@
+docker-build:
+  # Use the official docker image.
+  image: docker:latest
+  stage: build
+  services:
+    - docker
+  
+  before_install: 
+   - docker build -t ilyaprokop/docker-react -f dockerfile.dev .
+ 
+script: 
+   - docker run ilyaprokop/docker-react npm run test -- --coverage
+ 
+ 
+
